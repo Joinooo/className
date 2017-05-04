@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            function getClass(classname){
+                //判断浏览器是否存在这个方法
+                if(document.getElementsByClassName){
+                    return document.getElementsByClassName(classname);
+                }
+                var arr =[];//储存返回的数组
+                var dom = document.getElementsByName("*");//获取所有的dom元素
+                for(var i = 0;i<dom.length;i++)//遍历存在的class类
+                {
+                    var textArr = dom[i].classname.split(" ");
+                    for(var j = 0;j<textArr[i].length;j++)//遍历获取的class类
+                    {
+                        arr.push(textArr[i]);//添加进数组
+                    }
+                }
+                return arr;//返回数组
+            }
+
+            console.log(getClass("test"));
+            var test = getClass("test");
+            for(var i = 0;i<test.length;i++){
+                test[i].style.background="red";
+            }
+        }
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div class="dom test"></div>
+<div></div>
+<div class="dom"></div>
+<div></div>
+<div class="dom"></div>
+<div></div>
+<div class="dom test"></div>
+<div></div>
+</body>
+</html>
